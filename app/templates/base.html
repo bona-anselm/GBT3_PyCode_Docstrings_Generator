@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Generate Docstrings{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <h1>Code Docstring Generator</h1>
+            <p>Enter your Python code below:</p>
+            <form method="POST" action="{{ url_for('views.index') }}" enctype="multipart/form-data">
+                <textarea name="code" id="code" placeholder="Enter your code here..."></textarea>
+                <br>
+                <button type="submit">Generate Docstrings</button>
+            </form>
+            {% if new_code %}
+            <h2>Generated Code:</h2>
+            <pre>{{ new_code }}</pre>
+            {% endif %}
+        </div>
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h1>AI Powered PyCode Docstrings Generator</h1>
+        <p>Enter your Python code below:</p>
+        <form method="POST" action="{{ url_for('views.index') }}" enctype="multipart/form-data">
+            <textarea name="code" id="code" placeholder="Enter your code here..."></textarea>
+            <br>
+            <button type="submit">Generate Docstrings</button>
+        </form>
+        {% if new_code %}
+        <h2>Generated Code:</h2>
+        <pre>{{ new_code }}</pre>
+        {% endif %}
+    </div>
+{% endblock %}
